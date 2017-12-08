@@ -37,7 +37,7 @@ public class SecretActivity extends AppCompatActivity{
                 //save whatever string is in the EditText
                 String updatedSecret=secretText.getText().toString();
 
-                myPrefs.edit();
+                myPrefs.edit()
                     .putString(KEY_SECRET,updatedSecret);
                     .commit();
 
