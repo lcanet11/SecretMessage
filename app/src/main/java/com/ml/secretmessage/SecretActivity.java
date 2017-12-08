@@ -24,11 +24,12 @@ public class SecretActivity extends AppCompatActivity{
     }
 
     private void updateSecret(){
-        final EditText secretText=findViewById(R.id.secret_text);
-        Button update=findViewById(R.id.submit);
+        final EditText secretText= (EditText) findViewById(R.id.secret_text);
+        Button update= (Button) findViewById(R.id.submit);
 
         final SharedPreferences myPrefs=getSharedPreferences(MainActivity.SHARED_PREFS,MODE_PRIVATE);
         String secretString=myPrefs.getString(KEY_SECRET, null);
+
         secretText.setText(secretString);
 
         update.setOnClickListener(new View.OnClickListener(){
@@ -38,12 +39,10 @@ public class SecretActivity extends AppCompatActivity{
                 String updatedSecret=secretText.getText().toString();
 
                 myPrefs.edit()
-                    .putString(KEY_SECRET,updatedSecret);
+                    .putString(KEY_SECRET,updatedSecret)
                     .commit();
 
-                Toast.makeText(SecretActivity.this,
-                        "Updated Secret",
-                        Toast.LENGTH_LONG)
+                Toast.makeText(SecretActivity.this, "Updated Secret", Toast.LENGTH_LONG)
                         .show();
             }
         });
